@@ -20,6 +20,7 @@
 		4958025D1F123BC90085F1F0 /* Expense_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958025C1F123BC90085F1F0 /* Expense_ManagerUITests.swift */; };
 		4958026D1F123F070085F1F0 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958026C1F123F070085F1F0 /* ListViewController.swift */; };
 		4958026F1F123F360085F1F0 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958026E1F123F360085F1F0 /* AddViewController.swift */; };
+		49D683BD1F1570250061ABD8 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D683BC1F1570250061ABD8 /* ExpenseCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		492B03FF1F140C7600C7280C /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
-		492B04001F140C7600C7280C /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		492B03FF1F140C7600C7280C /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Expense+CoreDataClass.swift"; path = "../Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
+		492B04001F140C7600C7280C /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Expense+CoreDataProperties.swift"; path = "../Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		492B04051F140CD300C7280C /* Expenses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expenses.swift; path = ../Expenses.swift; sourceTree = "<group>"; };
 		495802361F123BC90085F1F0 /* Expense Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		495802391F123BC90085F1F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		4958025E1F123BC90085F1F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4958026C1F123F070085F1F0 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = ../ListViewController.swift; sourceTree = "<group>"; };
 		4958026E1F123F360085F1F0 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		49D683BC1F1570250061ABD8 /* ExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +91,6 @@
 		4958022D1F123BC90085F1F0 = {
 			isa = PBXGroup;
 			children = (
-				492B03FF1F140C7600C7280C /* Expense+CoreDataClass.swift */,
-				492B04001F140C7600C7280C /* Expense+CoreDataProperties.swift */,
 				495802381F123BC90085F1F0 /* Expense Manager */,
 				495802501F123BC90085F1F0 /* Expense ManagerTests */,
 				4958025B1F123BC90085F1F0 /* Expense ManagerUITests */,
@@ -111,10 +111,10 @@
 		495802381F123BC90085F1F0 /* Expense Manager */ = {
 			isa = PBXGroup;
 			children = (
-				492B04051F140CD300C7280C /* Expenses.swift */,
+				49DA741D1F155B340094515C /* CoreData */,
 				495802391F123BC90085F1F0 /* AppDelegate.swift */,
-				4958026C1F123F070085F1F0 /* ListViewController.swift */,
 				4958023B1F123BC90085F1F0 /* ViewController.swift */,
+				49D683BE1F1570420061ABD8 /* Expense */,
 				4958023D1F123BC90085F1F0 /* Main.storyboard */,
 				4958026E1F123F360085F1F0 /* AddViewController.swift */,
 				495802431F123BC90085F1F0 /* Assets.xcassets */,
@@ -141,6 +141,25 @@
 				4958025E1F123BC90085F1F0 /* Info.plist */,
 			);
 			path = "Expense ManagerUITests";
+			sourceTree = "<group>";
+		};
+		49D683BE1F1570420061ABD8 /* Expense */ = {
+			isa = PBXGroup;
+			children = (
+				4958026C1F123F070085F1F0 /* ListViewController.swift */,
+				49D683BC1F1570250061ABD8 /* ExpenseCell.swift */,
+				492B04051F140CD300C7280C /* Expenses.swift */,
+			);
+			name = Expense;
+			sourceTree = "<group>";
+		};
+		49DA741D1F155B340094515C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				492B03FF1F140C7600C7280C /* Expense+CoreDataClass.swift */,
+				492B04001F140C7600C7280C /* Expense+CoreDataProperties.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +306,7 @@
 				492B04061F140CD300C7280C /* Expenses.swift in Sources */,
 				492B04011F140C7600C7280C /* Expense+CoreDataClass.swift in Sources */,
 				492B04021F140C7600C7280C /* Expense+CoreDataProperties.swift in Sources */,
+				49D683BD1F1570250061ABD8 /* ExpenseCell.swift in Sources */,
 				4958023A1F123BC90085F1F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

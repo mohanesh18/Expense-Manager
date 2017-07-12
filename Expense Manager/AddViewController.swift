@@ -8,20 +8,34 @@
 
 import UIKit
 
+extension String {
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+}
+
+struct ExpenseDetail {
+    static var expDesc = ""
+    static var expAmnt: Float?
+}
+
 class AddViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var input: UITextField!
+    
+    @IBOutlet weak var eDescription: UITextField!
+    
+    @IBOutlet weak var eAmount: UITextField!
     
     @IBAction func addItem(_ sender: AnyObject) {
         addItemToList()
     }
     func addItemToList(){
-        if(input.text != ""){
-            list.append(input.text!)
-            input.text = ""
+        if eAmount.text != "" && eDescription.text != ""{
+            Expenses.sharedInstance.addExpense(amount: eAmount.text!.floatValue, date: Date(), category: eDescription.text!)
         }
-        print(list)
-        input.resignFirstResponder()
+
+        eDescription.resignFirstResponder()
+        eAmount.resignFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -31,7 +45,8 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        input.delegate = self
+        eDescription.delegate = self
+        eAmount.delegate = self
         // Do any additional setup after loading the view.
     }
 

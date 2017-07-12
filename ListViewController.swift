@@ -10,11 +10,34 @@ import UIKit
 
 var list = ["Buy Milk", "Run 5 miles", "Be clean", "Bath well"];
 
+class Entry {
+    
+    let tdate : Date
+    let description : String
+    let amount: Float
+    init(date : Date, desc : String, amnt: Float) {
+        self.tdate = date
+        self.description = desc
+        self.amount = amnt
+    }
+}
+
+let expensesList = [
+    Entry(date: Date(), desc: "Heading 1", amnt: 12.00),
+    Entry(date: Date(), desc: "Heading 2", amnt: 22.00),
+    Entry(date: Date(), desc: "Heading 3", amnt: 11.00),
+    Entry(date: Date(), desc: "Heading 4", amnt: 25.00)
+]
+
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var expenses = [Expense]();
     
+    
+    
     @IBOutlet weak var myTableView: UITableView!
+    
+    
     
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {
         
@@ -28,9 +51,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
         
-        cell.textLabel?.text = list[indexPath.row]
+        
+        let cell = self.myTableView.dequeueReusableCell(withIdentifier: "cell") as! ExpenseCell
+        
+        let entry = expensesList[indexPath.row]
+        cell.expenseDescription?.text = entry.description
+        cell.amountLabel.text = "\(entry.amount)"
+        cell.dateLabel.text = "\(entry.tdate)"
+        
         return cell
     }
     
@@ -49,8 +78,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
+        //self.myTableView.register(ExpenseCell.self, forCellReuseIdentifier: "cell")
+        myTableView.dataSource = self;
+        myTableView.delegate = self;
         // Do any additional setup after loading the view, typically from a nib.
     }
     
