@@ -8,28 +8,31 @@
 
 import UIKit
 
-var list = ["Buy Milk", "Run 5 miles", "Be clean", "Bath well"];
+//var list = ["Buy Milk", "Run 5 miles", "Be clean", "Bath well"];
 
 class Entry {
     
     let tdate : Date
-    let description : String
+    let category : String
     let amount: Float
     init(date : Date, desc : String, amnt: Float) {
         self.tdate = date
-        self.description = desc
+        self.category = desc
         self.amount = amnt
     }
 }
 
-let expensesList = [
-    Entry(date: Date(), desc: "Heading 1", amnt: 12.00),
-    Entry(date: Date(), desc: "Heading 2", amnt: 22.00),
-    Entry(date: Date(), desc: "Heading 3", amnt: 11.00),
-    Entry(date: Date(), desc: "Heading 4", amnt: 25.00)
-]
+//let expensesList = [
+//    Entry(date: Date(), desc: "Heading 1", amnt: 12.00),
+//    Entry(date: Date(), desc: "Heading 2", amnt: 22.00),
+//    Entry(date: Date(), desc: "Heading 3", amnt: 11.00),
+//    Entry(date: Date(), desc: "Heading 4", amnt: 25.00)
+//]
+let coreDataInstance = CoreDataManager()
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     var expenses = [Expense]();
     
@@ -45,9 +48,32 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func updateExpense(segue: UIStoryboardSegue) {
         expenses = Expenses.sharedInstance.expenseData()
     }
+    func getData() {
+        
+        // get task data
+        expenses = Expenses.sharedInstance.expenseData()
+        
+        //print("expense-get data", expenses)
+        
+        
+        self.myTableView.reloadData()
+    }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if expenses.count == 0 {
+            
+            let noDataLabel: UILabel     =  UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text             = "No expenses. Add new"
+            noDataLabel.textColor        = UIColor.gray
+            noDataLabel.textAlignment    = .center
+            noDataLabel.numberOfLines    = 3
+            tableView.backgroundView = noDataLabel
+        }
+
+        return 1
+    }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return list.count
+        return expenses.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -55,10 +81,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell = self.myTableView.dequeueReusableCell(withIdentifier: "cell") as! ExpenseCell
         
-        let entry = expensesList[indexPath.row]
-        cell.expenseDescription?.text = entry.description
+        let entry = expenses[indexPath.row]
+        cell.expenseDescription.text = entry.category
         cell.amountLabel.text = "\(entry.amount)"
-        cell.dateLabel.text = "\(entry.tdate)"
+        cell.dateLabel.text = "\(entry.date)"
         
         return cell
     }
@@ -68,13 +94,24 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         
         if editingStyle == UITableViewCellEditingStyle.delete{
-            list.remove(at: indexPath.row)
+            //list.remove(at: indexPath.row)
+            //myTableView.reloadData()
+            //print(indexPath);
+            let expense = expenses[indexPath.row]
+            //print(expense.uid!);
+            Expenses.sharedInstance.removeTask(withUUID: expense.uid!)
+            
+            //animation
+            expenses.remove(at: indexPath.row)
+            myTableView.deleteRows(at: [indexPath], with: .fade)
             myTableView.reloadData()
+            //getData()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.myTableView.reloadData()
+        getData();
+        //self.myTableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +119,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         myTableView.dataSource = self;
         myTableView.delegate = self;
         // Do any additional setup after loading the view, typically from a nib.
+        getData();
+        coreDataInstance.clearDatabase(entity: "Expense");
     }
     
     override func didReceiveMemoryWarning() {

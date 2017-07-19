@@ -31,7 +31,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     }
     func addItemToList(){
         if eAmount.text != "" && eDescription.text != ""{
-            Expenses.sharedInstance.addExpense(amount: eAmount.text!.floatValue, date: Date(), category: eDescription.text!)
+            let uuid = UUID().uuidString
+
+            Expenses.sharedInstance.addExpense(amount: eAmount.text!.floatValue, date: Date(), category: eDescription.text!, uid: uuid)
         }
 
         eDescription.resignFirstResponder()

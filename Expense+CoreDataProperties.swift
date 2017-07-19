@@ -19,5 +19,6 @@ extension Expense {
     @NSManaged public var amount: Float
     @NSManaged public var category: String?
     @NSManaged public var date: NSDate?
+    @NSManaged public var uid: String?
 
 }
