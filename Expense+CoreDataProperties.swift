@@ -2,7 +2,7 @@
 //  Expense+CoreDataProperties.swift
 //  Expense Manager
 //
-//  Created by mohanesh-1609 on 11/07/17.
+//  Created by mohanesh-1609 on 21/07/17.
 //  Copyright © 2017 PSM. All rights reserved.
 //
 
@@ -18,7 +18,7 @@ extension Expense {
 
     @NSManaged public var amount: Float
     @NSManaged public var category: String?
-    @NSManaged public var date: NSDate?
+    @NSManaged public var date: Date
     @NSManaged public var uid: String?
 
 }

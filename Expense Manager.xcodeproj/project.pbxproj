@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		492B04011F140C7600C7280C /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B03FF1F140C7600C7280C /* Expense+CoreDataClass.swift */; };
-		492B04021F140C7600C7280C /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B04001F140C7600C7280C /* Expense+CoreDataProperties.swift */; };
 		492B04061F140CD300C7280C /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492B04051F140CD300C7280C /* Expenses.swift */; };
 		4958023A1F123BC90085F1F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495802391F123BC90085F1F0 /* AppDelegate.swift */; };
 		4958023C1F123BC90085F1F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958023B1F123BC90085F1F0 /* ViewController.swift */; };
@@ -22,6 +21,7 @@
 		4958026F1F123F360085F1F0 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958026E1F123F360085F1F0 /* AddViewController.swift */; };
 		49D683BD1F1570250061ABD8 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D683BC1F1570250061ABD8 /* ExpenseCell.swift */; };
 		49E7D0BB1F1FF78100036ABA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7D0BA1F1FF78100036ABA /* CoreDataManager.swift */; };
+		49EB817D1F21BDFB0022AD0E /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB817C1F21BDFB0022AD0E /* Expense+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		492B03FF1F140C7600C7280C /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Expense+CoreDataClass.swift"; path = "../Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
-		492B04001F140C7600C7280C /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Expense+CoreDataProperties.swift"; path = "../Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		492B04051F140CD300C7280C /* Expenses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Expenses.swift; path = ../Expenses.swift; sourceTree = "<group>"; };
 		495802361F123BC90085F1F0 /* Expense Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		495802391F123BC90085F1F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		4958026E1F123F360085F1F0 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		49D683BC1F1570250061ABD8 /* ExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
 		49E7D0BA1F1FF78100036ABA /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = SOURCE_ROOT; };
+		49EB817C1F21BDFB0022AD0E /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Expense+CoreDataProperties.swift"; path = "../Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +160,7 @@
 			children = (
 				49E7D0BA1F1FF78100036ABA /* CoreDataManager.swift */,
 				492B03FF1F140C7600C7280C /* Expense+CoreDataClass.swift */,
-				492B04001F140C7600C7280C /* Expense+CoreDataProperties.swift */,
+				49EB817C1F21BDFB0022AD0E /* Expense+CoreDataProperties.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 				4958026D1F123F070085F1F0 /* ListViewController.swift in Sources */,
 				492B04061F140CD300C7280C /* Expenses.swift in Sources */,
 				492B04011F140C7600C7280C /* Expense+CoreDataClass.swift in Sources */,
-				492B04021F140C7600C7280C /* Expense+CoreDataProperties.swift in Sources */,
+				49EB817D1F21BDFB0022AD0E /* Expense+CoreDataProperties.swift in Sources */,
 				49D683BD1F1570250061ABD8 /* ExpenseCell.swift in Sources */,
 				49E7D0BB1F1FF78100036ABA /* CoreDataManager.swift in Sources */,
 				4958023A1F123BC90085F1F0 /* AppDelegate.swift in Sources */,

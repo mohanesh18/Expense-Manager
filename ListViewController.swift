@@ -49,13 +49,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         expenses = Expenses.sharedInstance.expenseData()
     }
     func getData() {
-        
+        //coreDataInstance.clearDatabase(entity: "Expense");
         // get task data
         expenses = Expenses.sharedInstance.expenseData()
-        
-        //print("expense-get data", expenses)
-        
-        
         self.myTableView.reloadData()
     }
     
@@ -84,30 +80,36 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let entry = expenses[indexPath.row]
         cell.expenseDescription.text = entry.category
         cell.amountLabel.text = "\(entry.amount)"
-        cell.dateLabel.text = "\(entry.date)"
+        //cell.dateLabel.text = "\(entry.date)"
         
+        cell.dateLabel.text = dateString(date: expenses[indexPath.row].date as! Date)
         return cell
     }
     
+    func dateString(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy, hh:mm"
+        let strDate = dateFormatter.string(from: date)
+        
+        return strDate
+    }
     
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         
         if editingStyle == UITableViewCellEditingStyle.delete{
-            //list.remove(at: indexPath.row)
-            //myTableView.reloadData()
-            //print(indexPath);
+            
             let expense = expenses[indexPath.row]
-            //print(expense.uid!);
             Expenses.sharedInstance.removeTask(withUUID: expense.uid!)
             
             //animation
             expenses.remove(at: indexPath.row)
             myTableView.deleteRows(at: [indexPath], with: .fade)
-            myTableView.reloadData()
-            //getData()
+            getData()
         }
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         getData();
@@ -120,7 +122,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         myTableView.delegate = self;
         // Do any additional setup after loading the view, typically from a nib.
         getData();
-        coreDataInstance.clearDatabase(entity: "Expense");
+        //coreDataInstance.clearDatabase(entity: "Expense");
     }
     
     override func didReceiveMemoryWarning() {

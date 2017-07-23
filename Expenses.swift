@@ -20,7 +20,7 @@ class Expenses{
         let expense = Expense(context:context)
         expense.amount = Float(amount)
         expense.category = category
-        expense.date = date as NSDate
+        expense.date = date
         expense.uid = uid
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -34,15 +34,10 @@ class Expenses{
             
             for expense in searchResults {
                 
-//                if expense.uuid == withUUID {
-//                    
-//                    // unschedule notification
-//                    if expense.notificationEnabled == true {
-//                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [expense.uuid!])
-//                    }
-//                    // delete task
-//                    context.delete(expense)
-//                }
+                if expense.uid == withUUID {
+                    // delete task
+                    context.delete(expense)
+                }
             }
             
         } catch {
@@ -60,10 +55,9 @@ class Expenses{
             let searchResults = try context.fetch(request)
             
             for expense in searchResults {
-                
-//                if expense.uuid == uuid {
-//                    expense.finished = isFinished
-//                }
+                if expense.uid == uuid {
+                    
+                }
             }
             
         } catch {
@@ -81,13 +75,13 @@ class Expenses{
             let searchResults = try context.fetch(request)
             
             for expense in searchResults {
-//                if expense.uuid == withUUID {
-//                    
-//                    expense.date = date as NSDate
-//                    expense.amount = amount
-//                    expense.category = category
-//                    
-//                }
+                if expense.uid == withUUID {
+                    
+                    expense.date = date
+                    expense.amount = amount
+                    expense.category = category
+                    
+                }
             }
         } catch {
             print("Error with request: \(error)")

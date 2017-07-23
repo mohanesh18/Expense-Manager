@@ -42,7 +42,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        addItemToList()
+        //addItemToList()
         return true
     }
     override func viewDidLoad() {

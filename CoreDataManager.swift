@@ -19,11 +19,10 @@ class CoreDataManager{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity )
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
-//        do {
-//            try coord.executeRequest(deleteRequest, withContext: context)
-//        } catch let error as NSError {
-//            debugPrint(error)
-//        }
+        //        do {
+        //            try coord.executeRequest(deleteRequest, withContext: context)
+        //        } catch let error as NSError {
+        //            debugPrint(error)
+        //        }
     }
-    
 }
